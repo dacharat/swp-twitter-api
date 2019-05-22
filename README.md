@@ -16,3 +16,6 @@ TOKEN_SECRET_KEY={Access token secret}
 ```
 
 command `yarn; yarn start` or `npm install; npm start`
+
+### Deploy
+`gcloud app deploy`
