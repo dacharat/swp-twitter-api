@@ -48,10 +48,10 @@ const addFilterCount = async () => {
 // }
 
 const location_trend = localtion_id => {
-   var stream = T.stream("trends/place", { id: localtion_id });
-   stream.on("tweet", async function(tweet) {
-     console.log(tweet); 
+   T.get("trends/place", { id: localtion_id }, (err, data, response) => {
+    console.log(JSON.stringify(data, undefined, 2));
    });
+   
 } 
 
 module.exports = {
