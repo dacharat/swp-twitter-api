@@ -5,7 +5,7 @@ const { status_filter, location_trend } = require("./twitter");
 
 const app = express();
 const PORT = 3000;
-const HOST = "127.0.0.1";
+const HOST = "0.0.0.0";
 
 app.get("/", (req, res) => {
   res.send("SWP practice API");
@@ -16,10 +16,10 @@ app.get("/track-filter", async (req, res) => {
   res.send(jsonDb);
 });
 
-status_filter("5ปีคสช");
+// status_filter("5ปีคสช");
 // location_trend(1)
 // 23424960 = woeid of thailand
-// location_trend(23424960);
+location_trend(23424960);
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
