@@ -11,6 +11,11 @@ var T = new Twit({
   // strictSSL: true // optional - requires SSL certificates to be valid.
 });
 
+/**
+ * Filter twiiter track, count number of tweet with the interesting track in each time
+ * 
+ * @param {String} track => name of the interesting track
+ */
 const status_filter = track => {
   try {
     var stream = T.stream("statuses/filter", { track: track });
@@ -22,6 +27,9 @@ const status_filter = track => {
   }
 };
 
+/**
+ * Add number of track that tweeted to json database
+ */
 const addFilterCount = async () => {
   const currentDB = await db.read();
   const currenttime = moment()
@@ -34,12 +42,19 @@ const addFilterCount = async () => {
 
 // const sample = () => {
 //   var stream = T.stream("statuses/sample");
-
 //   stream.on("tweet", function(tweet) {
 //     console.log(tweet);
 //   });
 // }
 
+const location_trend = localtion_id => {
+   var stream = T.stream("trends/place", { id: localtion_id });
+   stream.on("tweet", async function(tweet) {
+     console.log(tweet); 
+   });
+} 
+
 module.exports = {
-  status_filter
+  status_filter,
+  location_trend
 };
